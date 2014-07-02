@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "blackjack.h"
 
 using namespace std;
@@ -26,9 +27,8 @@ BlackJack::~BlackJack()
 	delete[] person;
 }
 
-int BlackJack::Play(const int winnings)
+void BlackJack::Play(int& money)
 {
-	int money = winnings; //money win
 	bool dealerWins = false; //dealer auto-win
 	bool blackJack = false; //player auto-win blackJack
 	bool inPlay = true;
@@ -134,9 +134,9 @@ int BlackJack::Play(const int winnings)
 			cout << endl;
 			cout << "Current Balance : $" << money << endl;
 			cout << "YOU'RE BROKE!!!" << endl;
-			cout << "BYE!" << endl;
+			cout << "TIME TO LEAVE THE TABLE :(" << endl;
 			cout << endl;
-			return money;
+			return;
 		}
 
 		dealerWins = false;
@@ -156,6 +156,7 @@ int BlackJack::Play(const int winnings)
 			{
 				goodSelection = true;
 				inPlay = false;
+				return;
 			}
 			else
 			{
@@ -164,8 +165,6 @@ int BlackJack::Play(const int winnings)
 
 		}
 	}
-	cout << "You finished with: " << money << endl;
-	return money;
 }
 void BlackJack::DealerDisplay(const Card* dealer) const
 {

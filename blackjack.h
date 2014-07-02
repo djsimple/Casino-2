@@ -12,7 +12,7 @@ public:
 	BlackJack();
 	BlackJack(int);
 	~BlackJack();
-	int Play(const int);
+	void Play(int&);
 	void DealerDisplay(const Card*) const;
 	void CountCards(const Player*);
 	Deck GetDeck() const;
